@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.txs.artandroid">
+
+    <uses-permission android:name="com.txs.artandroid.permission.ACCESS_BOOK_SERVICE"/>
+    <uses-permission android:name="com.txs.PROVIDER"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <permission
+            android:name="com.txs.artandroid.permission.ACCESS_BOOK_SERVICE"
+            android:protectionLevel="normal"/>
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".c2.socket.TCPClientActivity">
+        </activity>
+
+        <service
+                android:name=".c2.socket.TCPServerService"
+                android:enabled="true"
+                android:exported="true">
+        </service>
+
+        <activity android:name=".c2.provider.ProviderActivity">
+        </activity>
+
+        <provider
+                android:name=".c2.provider.BookProvider"
+                android:authorities="com.txs.android.c2.provider"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="com.txs.PROVIDER"
+                android:process=":provider">
+        </provider>
+
+        <activity android:name=".c2.BookManagerActivity">
+        </activity>
+
+        <service
+                android:name=".c2.BookManagerService"
+                android:process=":remote">
+        </service>
+
+        <activity android:name=".c2.MessengerActivity">
+        </activity>
+
+        <service
+                android:name=".c2.MessengerService"
+                android:process=":remote">
+        </service>
+
+        <activity android:name=".c1.FilterActivity">
+            <intent-filter>
+                <action android:name="com.art.charpter.a"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <action android:name="com.art.charpter_1.b"/>
+
+                <category android:name="com.art.charpter_1.c"/>
+                <category android:name="com.art.charpter_1.d"/>
+
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="video/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".c1.C1point3Activity">
+        </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

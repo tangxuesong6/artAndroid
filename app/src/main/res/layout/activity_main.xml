@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+    <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_c1_filter"
+            android:text="C1_1.3"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:minHeight="50dp"
+            android:background="#6E7521"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_aidl"
+            android:text="AIDL"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:minHeight="50dp"
+            android:background="#6E7521"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_provider"
+            android:text="PROVIDER"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:minHeight="50dp"
+            android:background="#6E7521"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_socket"
+            android:text="SOCKET"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:minHeight="50dp"
+            android:background="#6E7521"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+</LinearLayout>
