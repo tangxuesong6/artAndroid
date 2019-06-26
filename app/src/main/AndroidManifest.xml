@@ -20,6 +20,16 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".c2.binderpool.BinderPoolActivity">
+        </activity>
+
+        <service
+                android:name=".c2.binderpool.BinderPoolService"
+                android:process=":pool"
+                android:enabled="true"
+                android:exported="true">
+        </service>
+
         <activity android:name=".c2.socket.TCPClientActivity">
         </activity>
 

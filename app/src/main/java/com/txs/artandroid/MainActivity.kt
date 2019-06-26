@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import com.txs.artandroid.c1.C1point3Activity
 import com.txs.artandroid.c2.BookManagerActivity
+import com.txs.artandroid.c2.binderpool.BinderPoolActivity
 import com.txs.artandroid.c2.provider.ProviderActivity
 import com.txs.artandroid.c2.socket.TCPClientActivity
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mTvAidl: TextView
     private lateinit var mTvProvider: TextView
     private lateinit var mTvSocket: TextView
-
+    private lateinit var mTvBinderPool: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +25,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mTvAidl = findViewById<TextView>(R.id.tv_aidl)
         mTvProvider = findViewById<TextView>(R.id.tv_provider)
         mTvSocket = findViewById<TextView>(R.id.tv_socket)
+        mTvBinderPool = findViewById<TextView>(R.id.tv_binder_pool)
 
         mTvC1Filter.setOnClickListener(this)
         mTvAidl.setOnClickListener(this)
         mTvProvider.setOnClickListener(this)
         mTvSocket.setOnClickListener(this)
+        mTvBinderPool.setOnClickListener(this)
 
     }
 
@@ -45,6 +48,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tv_socket -> {
                 startActivity(Intent(this@MainActivity,TCPClientActivity::class.java))
+            }
+            R.id.tv_binder_pool -> {
+                startActivity(Intent(this@MainActivity,BinderPoolActivity::class.java))
             }
         }
     }

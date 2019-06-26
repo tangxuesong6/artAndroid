@@ -11,6 +11,7 @@ import android.text.TextUtils
 import android.widget.EditText
 import android.widget.TextView
 import com.txs.artandroid.R
+import com.txs.artandroid.c2.binderpool.BinderPool
 import java.io.*
 import java.lang.ref.WeakReference
 import java.net.Socket
