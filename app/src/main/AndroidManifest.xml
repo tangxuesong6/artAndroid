@@ -20,14 +20,18 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".c4.CustomViewActivity">
+        </activity>
+        <activity android:name=".c3.ScrollActivity">
+        </activity>
         <activity android:name=".c2.binderpool.BinderPoolActivity">
         </activity>
 
         <service
                 android:name=".c2.binderpool.BinderPoolService"
-                android:process=":pool"
                 android:enabled="true"
-                android:exported="true">
+                android:exported="true"
+                android:process=":pool">
         </service>
 
         <activity android:name=".c2.socket.TCPClientActivity">

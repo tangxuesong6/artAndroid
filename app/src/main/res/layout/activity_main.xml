@@ -57,4 +57,14 @@
             android:background="#6E7521"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+    <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_circle_view"
+            android:text="CircleView"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:minHeight="50dp"
+            android:background="#6E7521"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </LinearLayout>

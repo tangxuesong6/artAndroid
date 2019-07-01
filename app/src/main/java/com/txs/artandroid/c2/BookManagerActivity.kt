@@ -8,6 +8,7 @@ import android.content.ServiceConnection
 import android.os.*
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.LinearLayout
 import com.txs.artandroid.R
 
 class BookManagerActivity : AppCompatActivity() {
