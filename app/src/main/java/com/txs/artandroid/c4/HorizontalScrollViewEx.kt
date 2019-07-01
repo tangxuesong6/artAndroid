@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.VelocityTracker
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Scroller
 import kotlin.math.abs
@@ -85,7 +86,19 @@ class HorizontalScrollViewEx : ViewGroup {
     }
 
 
-    override fun onLayout(p0: Boolean, p1: Int, p2: Int, p3: Int, p4: Int) {
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        var childLeft = 0
+        val childCount = childCount
+        mChildrenSize = childCount
+        for (i in 0 until mChildrenSize) {
+            val childView = getChildAt(i)
+            if (childView.visibility != View.GONE) {
+                val childWidth = childView.measuredWidth
+                mChildWidth = childWidth
+                childView.layout(childLeft, 0, childLeft + childWidth, childView.measuredHeight)
+                childLeft += childWidth
+            }
+        }
 
     }
 
@@ -114,8 +127,8 @@ class HorizontalScrollViewEx : ViewGroup {
                     mChildIndex = (scrollX + mChildWidth / 2) / mChildWidth
                 }
                 mChildIndex = max(0, min(mChildIndex, mChildrenSize - 1))
-                val dx = mChildIndex * mChildWidth -  scrollX
-                smoothScrollBy(dx,0)
+                val dx = mChildIndex * mChildWidth - scrollX
+                smoothScrollBy(dx, 0)
                 mVelocityTracker?.clear()
             }
 
@@ -130,24 +143,46 @@ class HorizontalScrollViewEx : ViewGroup {
         var measureWidth = 0
         var measureHeight = 0
         val childCount = childCount
-        measureChildren(widthMeasureSpec,heightMeasureSpec)
+        measureChildren(widthMeasureSpec, heightMeasureSpec)
         val widthSpaceSize = MeasureSpec.getSize(widthMeasureSpec)
         val widthSpecMode = MeasureSpec.getMode(widthMeasureSpec)
         val heightSpaceSize = MeasureSpec.getSize(heightMeasureSpec)
         val heightSpecMode = MeasureSpec.getMode(heightMeasureSpec)
-        if (childCount == 0){
-            setMeasuredDimension(0,0)
-        }else if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST){
+        if (childCount == 0) {
+            setMeasuredDimension(0, 0)
+        } else if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST) {
             val childView = getChildAt(0)
-            measureWidth = childView.measuredWidth*childCount
+            measureWidth = childView.measuredWidth * childCount
             measureHeight = childView.measuredHeight
-            setMeasuredDimension(measureWidth,measureHeight)
+            setMeasuredDimension(measureWidth, measureHeight)
+        } else if (heightSpecMode == MeasureSpec.AT_MOST) {
+            val childView = getChildAt(0)
+            measureHeight = childView.measuredHeight
+            measureWidth = widthSpaceSize
+            setMeasuredDimension(measureWidth, measureHeight)
+        } else if (widthSpecMode == MeasureSpec.AT_MOST) {
+            val childView = getChildAt(0)
+            measureWidth = childView.measuredWidth * childCount
+            setMeasuredDimension(measureWidth, heightSpaceSize)
         }
 
     }
 
+
     private fun smoothScrollBy(dx: Int, i: Int) {
-        mScroller?.startScroll(scrollX,0,dx,0,500)
+        mScroller?.startScroll(scrollX, 0, dx, 0, 500)
         invalidate()
+    }
+
+    override fun computeScroll() {
+        if (mScroller!!.computeScrollOffset()) {
+            scrollTo(mScroller!!.currX, mScroller!!.currY)
+            postInvalidate()
+        }
+    }
+
+    override fun onDetachedFromWindow() {
+        mVelocityTracker?.recycle()
+        super.onDetachedFromWindow()
     }
 }
