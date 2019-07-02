@@ -12,6 +12,7 @@ import com.txs.artandroid.c2.provider.ProviderActivity
 import com.txs.artandroid.c2.socket.TCPClientActivity
 import com.txs.artandroid.c4.CustomViewActivity
 import com.txs.artandroid.c4.DemoActivity_2
+import com.txs.artandroid.c5.NotifyActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mTvC1Filter: TextView
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mTvBinderPool: TextView
     private lateinit var mTvCircleView: TextView
     private lateinit var mTvCustomView: TextView
-
+    private lateinit var mTvNotify: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mTvBinderPool = findViewById<TextView>(R.id.tv_binder_pool)
         mTvCircleView = findViewById<TextView>(R.id.tv_circle_view)
         mTvCustomView = findViewById<TextView>(R.id.tv_custom_view)
+        mTvNotify = findViewById<TextView>(R.id.tv_notify)
 
 
         mTvC1Filter.setOnClickListener(this)
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mTvBinderPool.setOnClickListener(this)
         mTvCircleView.setOnClickListener(this)
         mTvCustomView.setOnClickListener(this)
+        mTvNotify.setOnClickListener(this)
 
     }
 
@@ -67,6 +70,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tv_custom_view -> {
                 startActivity(Intent(this@MainActivity,DemoActivity_2::class.java))
+            }
+            R.id.tv_notify -> {
+                startActivity(Intent(this@MainActivity,NotifyActivity::class.java))
             }
         }
     }
