@@ -50,7 +50,6 @@ class NotifyActivity : AppCompatActivity() {
         val remoteView = RemoteViews(packageName,R.layout.layout_notification)
         remoteView.setTextViewText(R.id.tv_one,"one")
         remoteView.setTextViewText(R.id.tv_two,"two")
-
         remoteView.setImageViewBitmap(R.id.imgv_one,bitmap)
         remoteView.setImageViewResource(R.id.imgv_two,R.mipmap.icon)
         var notification = Notification()
@@ -74,7 +73,6 @@ class NotifyActivity : AppCompatActivity() {
                 .setCustomBigContentView(remoteView)
                 .setOngoing(true)
         }
-
         manager.notify(1, notification)
     }
 
